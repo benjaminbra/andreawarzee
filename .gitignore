@@ -1,0 +1,4 @@
+/vendor
+.env
+/public/res/img/*
+!/public/res/img/logo.png
