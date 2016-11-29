@@ -123,6 +123,7 @@ class Admin extends Controller
         }
         if(isset($request->images) && !empty($request->images)){
             foreach($request->images as $image){
+                //If no file, then no image to save
                 if(isset($image["file"]) && $image["file"] != null){
                   $projectImage = new ProjectImage;
                   $projectImage->type = $image["type"];
