@@ -115,3 +115,7 @@ form label{
     max-width: 100%;
     max-height: 200px;
 }
+
+.preview-image{
+  background: #ededed;
+}

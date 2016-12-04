@@ -17,7 +17,7 @@
                         <textarea name="{{ $param->label }}" class="form-control" id="{{ $param->label }}">{{ $param->content }}</textarea>
                     @elseif($param->type == "image")
                         <input type="file" name="{{ $param->label }}" class="form-control" id="{{ $param->label }}"/>
-                        <div class="col-sm-12">Version actuelle : <img src="{{ $param->content }}"/></div>
+                        <div class="col-sm-12">Version actuelle : <img class="preview-image" src="{{ $param->content }}"/></div>
                     @endif
                 </div>
             </div>

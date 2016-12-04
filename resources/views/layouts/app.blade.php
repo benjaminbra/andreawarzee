@@ -4,22 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Andréa Warzee</title>
-    <link rel="shortcut icon" href="{{url('/res/img/logo.png')}}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ Trnslt::profilD('logo')[0]->content }}" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="{{ url('/lib/bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url('/res/style.css') }}">
     <link rel="stylesheet" href="{{ url('/lib/fontawesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ url('/lib/perfectscrollbar/css/perfect-scrollbar.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url('/res/style.css') }}">
     @yield('css')
 </head>
 <body>
 <div class="page-container">
     <div class="no-padd header col-lg-2 col-md-3">
         <div class="no-padd sub-header col-lg-12 col-md-12">
-            <div class="header-height col-lg-12 col-md-12">
-
-            </div>
             <a href="{{ url('/'.$lang) }}" class="block-header col-lg-12 col-md-12 col-xs-12">
-                <img class="img-responsive" alt="logo" src="{{url('/res/img/logo.png')}}"/>
+                <img class="img-responsive" alt="logo" src="{{ Trnslt::profilD('logo')[0]->content }}"/>
             </a>
             <div class="block-description col-lg-12 col-md-12 col-xs-12">
                 <span class="description">
@@ -27,7 +24,7 @@
                 </span>
             </div>
             <div class="footer col-lg-12 col-md-12 text-center">
-                <hr>
+                <img class="footer-logo" src="{{ Trnslt::profilD('footer-logo')[0]->content }}" height="50" alt="footer-logo">
                 Site par Benjamin Brasseur <br/>
                 Plan du site |
                 @if(Auth::guest())
@@ -47,7 +44,7 @@
                 <div class="col-xs-10">
                     <div class="col-xs-1">
                         <a href="{{ url('/'.$lang) }}">
-                            <img class="logo" alt="logo" src="{{url('/res/img/logo.png')}}"/>
+                            <img class="logo" alt="logo" src="{{ Trnslt::profilD('logo')[0]->content }}"/>
                         </a>
                     </div>
                 </div>

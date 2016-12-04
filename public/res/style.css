@@ -12,7 +12,7 @@ html,body{
 }
 
 body.unicorn{
-    cursor: url(unicorn.cur), auto;
+    cursor: url(unicorn.cur) , auto;
 }
 
 .page-container{
@@ -46,8 +46,12 @@ body.unicorn{
     margin: 0;
     position: relative;
     height: 100%;
-    background: #323232;
+    background: #606060;
     color: white;
+}
+
+.sub-header .block-description{
+  padding: 0 25px;
 }
 
 .header .description{
@@ -119,6 +123,11 @@ h1.home-title{
     position: absolute;
 }
 
+.footer .footer-logo{
+  display: block;
+  margin: 0 auto 10px;
+}
+
 .project .title{
     font-family: BebasNeue, Arial, sans-serif;
     padding: 0 15px 0;
@@ -175,7 +184,7 @@ h1.home-title{
     overflow: hidden;
     padding: 0;
     text-decoration: none;
-    margin: 0 0 10px;
+    margin: 45px 0;
 }
 
 .block-menu{
