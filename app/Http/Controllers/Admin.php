@@ -178,7 +178,7 @@ class Admin extends Controller
 
                     File::delete($param->content);
                     $file = $request->$label;
-                    $name = $param->label.$file->extension();
+                    $name = $param->label.'.'.$file->extension();
                     $param->content = self::getImagePath().$name;
                     self::uploadImage($file->path(),$name,array(150,150));
                 }
