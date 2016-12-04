@@ -356,7 +356,7 @@ h1.home-title{
     }
 
     .block-menu{
-        max-height: 150px;
+        max-height: 105px;
     }
 
     .block-menu .description{
@@ -368,7 +368,7 @@ h1.home-title{
     .Wallop-item{
         height: 300px;
     }
-    .project-image{
+    .project .project-image{
         max-height: 300px;
     }
 }
