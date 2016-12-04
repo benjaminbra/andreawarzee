@@ -179,7 +179,8 @@ class Admin extends Controller
                     File::delete($param->content);
                     $file = $request->$label;
                     $name = $param->label.'.'.$file->extension();
-                    $param->content = self::getImagePath().$name;
+                    $param->content = self::getImagePath(false).$name;
+                    var_dump($param->content);
                     self::uploadImage($file->path(),$name,array(150,150));
                 }
 
@@ -259,10 +260,15 @@ class Admin extends Controller
     /**
      * @return string
      */
-    private static function getImagePath(){
-        $path = getcwd().'/res/img/';
+    private static function getImagePath($save = true){
+        if($save){
+          $path = getcwd().'/res/img/';
+        } else {
+          $path = url('/').'/res/img/';
+        }
+
         if(strtoupper(substr(PHP_OS, 0, 3)) == 'WIN'){
-            $path = str_replace('/','\\',$path);
+          $path = str_replace('/','\\',$path);
         }
         return $path;
     }

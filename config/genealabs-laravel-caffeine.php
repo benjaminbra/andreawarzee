@@ -2,6 +2,6 @@
 
 return [
     'dripIntervalInMilliSeconds' => 300000,
-    'domain' => url('/'),
+    'domain' => 'http://localhost/',
     'route' => 'genealabs/laravel-caffeine/drip',
 ];
