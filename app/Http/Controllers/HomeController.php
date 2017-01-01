@@ -36,7 +36,7 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index($lang){
-        $projectList = Project::orderBy('datePost','desc')->get();
+        $projectList = Project::where('published','1')->orderBy('datePost','desc')->get();
         $projectList = Project::updateProject($projectList);
         self::langCheck($lang);
 
@@ -64,7 +64,7 @@ class HomeController extends Controller
         self::langCheck($lang);
         self::projectCheck($id);
 
-        $project = Project::where('id',$id)->get();
+        $project = Project::where('id',$id)->where('published','1')->get();
         $project = Project::updateProject($project);
 
         return view('project',[

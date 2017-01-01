@@ -119,3 +119,54 @@ form label{
 .preview-image{
   background: #ededed;
 }
+
+#imageUploader{
+  background: #f9f9f9;
+  width: 100%;
+  max-width: 600px;
+  color: #f9f9f9;
+  margin: auto;
+  border-radius: 5px;
+  height: 200px;
+  box-shadow: 0 0 2px black;
+}
+
+#public{
+  font-size: 20px;
+  padding: 5px 15px;
+  border: none;
+}
+
+.public{
+  background-color: #24bfdc;
+}
+.public:hover{
+  background: #058fa9;
+}
+
+.unpublic{
+  background-color: #bdbdbd;
+}
+.unpublic:hover{
+  background-color: #8a8a8a;
+}
+
+.question{
+  font-size: 30px;
+}
+
+.question:hover .sub-question{
+  display: block;
+  margin: -10px 0;
+}
+
+.sub-question{
+  background: #f5eaea;
+  font-size: 14px;
+  position: absolute;
+  padding: 10px;
+  border-radius: 3px;
+  box-shadow: 0px 0px 2px black;
+  z-index: 100;
+  display: none;
+}

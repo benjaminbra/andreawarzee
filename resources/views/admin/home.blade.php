@@ -15,6 +15,7 @@
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Charger</button>
+            <a href="{{ url('/admin/image/optimizer') }}" class="btn btn-primary pull-right">Nettoyer les images</a>
         </form>
         @if(isset($category))
             @foreach($category as $tag)

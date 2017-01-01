@@ -53,12 +53,24 @@ class Admin extends Controller
     }
 
     public function newProject(){
+      $langL = Lang::all();
+      $project = new Project;
+      $projectTr = new ProjectTranslate;
 
-        return view('admin.project',[
-            "project" => "",
-            "pT" => "",
-            "pI" => "",
-        ]);
+      $result = array();
+      $project->datePost = NULL;
+      $project->labelTag = NULL;
+      $project->published = 0;
+      $project->save();
+      $result[] = $project;
+      foreach ($langL as $lang) {
+        $projectTr = new ProjectTranslate;
+        $projectTr->idProject = $project->id;
+        $projectTr->lang = $lang->label;
+        $projectTr->save();
+        $result[] = $projectTr;
+      }
+      return redirect('admin/project/edit/'.$project->id);
     }
 
     public function editProject($id){
@@ -93,59 +105,103 @@ class Admin extends Controller
         return redirect('/admin');
     }
 
-    public function save(Request $request){
-        $langL = Lang::all();
-        $project = new Project;
-        $returnPath = '/admin/project/tag/'.$request->tag;
-        $updateImages = array();
+    public function apiData(Request $request){
+      $result = false;
+      $project = new Project;
+      $projectTr = new ProjectTranslate;
+      $image = new ProjectImage;
+      switch ($request->table) {
+        case 'image':
+          $image = ProjectImage::find($request->id);
+          $result = $image;
+          break;
+        case 'project':
+          $project = Project::find($request->id);
+          $result = $project;
+          break;
+        case 'project_translate':
+          $projectTr = ProjectTranslate::where('idProject',$request->id);
+          $result = $projectTr;
+        default:
+          # code...
+          break;
+      }
+      return json_encode($result);
 
-        if(isset($request->id) && !empty($request->id)){
-            $project = Project::find($request->id);
-            $returnPath = '/admin/project/edit/'.$request->id;
-        }
-        $project->datePost = TranslationBank::dateTranslate('fr',$request->datePost);
-        $project->labelTag = self::checkDifference($project->labelTag, $request->tag);
-        $project->save();
+    }
 
-        foreach($langL as $lang){
-            $projectTranslate = new ProjectTranslate;
+    public function apiSave(Request $request){
+      $result;
+      $langL = Lang::all();
+      $project = new Project;
+      $projectTr = new ProjectTranslate;
+      $projectImg = new ProjectImage;
+      try{
+        switch ($request->table) {
+
+          case "image":
+            $projectImg = ProjectImage::find($request->id);
+            $projectImg->{$request->name} = $request->data;
+            $projectImg->save();
+            $result = $projectImg;
+            break;
+
+          case "project_translate":
+            $start = stripos($request->name,'[')+1;
+            $end = stripos($request->name,']');
+            $lang = substr($request->name,$start,$end-$start);
             if(isset($request->id) && !empty($request->id)){
-                $projectTranslate = ProjectTranslate::where('idProject',$request->id)
-                                                        ->where('lang',$lang->label)
-                                                        ->get()[0];
-            } else {
-                $projectTranslate->lang = $lang->label;
-                $projectTranslate->idProject = $project->id;
+              $projectTr = ProjectTranslate::where('idProject',$request->id)->where('lang',$lang)->get()[0];
             }
-            $projectTranslate->title = $request->title[$lang->label];
-            $projectTranslate->description = $request->description[$lang->label];
-            $projectTranslate->save();
-        }
-        if(isset($request->images) && !empty($request->images)){
-            foreach($request->images as $image){
-                //If no file, then no image to save
-                if(isset($image["file"]) && $image["file"] != null){
-                  $projectImage = new ProjectImage;
-                  $projectImage->type = $image["type"];
-                  $projectImage->extension = $image["file"]->extension();
-                  $projectImage->idProject = $project->id;
-                  $projectImage->position = self::getLastPos($project->id)+1;
-                  $projectImage->save();
-
-                  $updateImages[$projectImage->id]['id'] = $projectImage->id;
-                  $updateImages[$projectImage->id]['pos'] = $image["position"];
-
-                  $newFileName = $projectImage->id.'.'.$image["file"]->extension();
-                  self::uploadImage($image["file"]->path(),$newFileName);
-                }
+            $name = explode('[',$request->name)[0];
+            $projectTr->$name = $request->data;
+            $projectTr->save();
+            $result = $projectTr;
+            break;
+          case "project":
+            if(isset($request->id) && !empty($request->id)){
+                $project = Project::find($request->id);
             }
-        }
-        if(isset($request->imageUpdate) && !empty($request->imageUpdate)){
-            $updateImages = array_merge($updateImages,$request->imageUpdate);
-        }
-        self::updatePosition($updateImages);
+            if($request->name == "datePost"){
+              $request->data = TranslationBank::dateTranslate('fr',$request->data);
+            }
+            $project->{$request->name} = $request->data;
+            $project->save();
+            $result = $project;
+            break;
 
-        return redirect($returnPath);
+          default:
+            $result = "false";
+            break;
+        }
+
+        echo json_encode($result);
+      } catch(Exception $e){
+        echo json_encode("false");
+      }
+
+
+    }
+
+    public function apiSaveImages(Request $request){
+      if(isset($request->file) && !empty($request->file)){
+        $projectImage = new ProjectImage;
+        $projectImage->type = $request->type;
+        $projectImage->extension = $request->file->extension();
+        $projectImage->idProject = $request->id;
+        $projectImage->position = self::getLastPos($request->id)+1;
+        $projectImage->save();
+
+        $newFileName = $projectImage->id.'.'.$request->file->extension();
+        self::uploadImage($request->file->path(),$newFileName);
+
+        $result["id"] = $projectImage->id;
+        $result["extension"] = $projectImage->extension;
+        $result["type"] = $projectImage->type;
+        $result["position"] = $projectImage->position;
+        $result["success"] = 1;
+        echo json_encode($result);
+      }
     }
 
     public function deleteImage(Request $request){

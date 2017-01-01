@@ -75,6 +75,24 @@ Route::group(['middleware' => ['web']], function () {
         Route::post('/project/save', 'Admin@save');
 
         /**
+        * Save any modifications by ajax request
+        * WORK : TODO -> API FUNCTIONNAL
+        */
+        Route::post('/project/api/save', 'Admin@apiSave');
+
+        /**
+        * Get any data by ajax request
+        * WORK : TODO -> API FUNCTIONNAL
+        */
+        Route::post('/project/api/data', 'Admin@apiData');
+
+        /**
+        * Save images send by ajax request
+        * WORK : TODO -> API FUNCTIONNAL
+        */
+        Route::post('/project/api/images', 'Admin@apiSaveImages');
+
+        /**
          * Delete an image and return a json bool
          * WORK : DONE
          */
@@ -87,6 +105,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('/project/delete/{id}', 'Admin@deleteProject');
 
         Route::get('/image/optimizer', 'Admin@imageOptimizer');
+
 
     });
 
@@ -127,4 +146,3 @@ Route::group(['middleware' => ['web']], function () {
 
     });
 });
-
