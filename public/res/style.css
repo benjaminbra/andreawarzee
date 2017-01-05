@@ -295,8 +295,9 @@ h1.home-title{
         display: none;
     }
 
-    .menu.active{
-        display: block;
+    .menu.active {
+      display: block;
+      z-index: 1000;
     }
 
     .mobile-menu .logo{

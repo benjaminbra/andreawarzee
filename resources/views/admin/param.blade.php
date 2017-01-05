@@ -5,12 +5,12 @@
         <h1>
             Gestion des paramètres
         </h1>
-        <hr/>
     </div>
     <form action="{{ url('/admin/param/save') }}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
         @foreach($params as $param)
             <div class="form-group col-sm-12">
+                <hr/>
                 <label for="{{ $param->label }}" class="col-sm-2">{{ $param->label }}</label>
                 <div class="col-sm-6">
                     @if($param->type == "text")
