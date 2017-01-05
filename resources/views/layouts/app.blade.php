@@ -8,8 +8,8 @@
     <link rel="stylesheet" type="text/css" href="{{ url('/lib/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url('/lib/fontawesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ url('/lib/perfectscrollbar/css/perfect-scrollbar.min.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ url('/res/style.css') }}">
     @yield('css')
+    <link rel="stylesheet" type="text/css" href="{{ url('/res/style.css') }}">
 </head>
 <body>
 <div class="page-container">

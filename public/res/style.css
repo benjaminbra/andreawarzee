@@ -142,7 +142,8 @@ h1.home-title{
 }
 
 .Wallop-list{
-    width: 100%;
+  margin: 0 0 20px;
+  width: 100%;
 }
 
 .Wallop-item,
