@@ -296,7 +296,7 @@
         '</div>'+
         '<div class="col-sm-12">'+
             '<input type="hidden" name="imageUpdate['+e.id+'][id]" value="'+e.id+'">'+
-            '<input type="text" id="p'+e.id+'" class="position form-control">'+e.position+'</button>'+
+            '<input type="text" id="p'+e.id+'" class="position form-control" value="'+e.position+'">'+
         '</div>'+
         '<div class="col-sm-12">'+
             '<img class="img-project" src="{{ url('/res/img/') }}/'+e.id+'.'+e.extension+'"/>'+
@@ -316,7 +316,7 @@
     for(var i = 0; i < size; i++){
       if(i != idx){
         var img = $('#image').children().eq(i);
-        if(obj.attr('id').substring(1) < img.attr('id').substring(1)){
+        if(parseInt(obj.attr('id').substring(1)) < parseInt(img.attr('id').substring(1))){
           changeDown = img;
         } else {
           changeUp = img;
