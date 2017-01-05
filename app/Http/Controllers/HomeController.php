@@ -48,6 +48,7 @@ class HomeController extends Controller
 
     public function page($lang,$tagLabel){
         $projectList = Project::where('labelTag',$tagLabel)
+                                ->where('published','1')
                                 ->orderBy('datePost','desc')->get();
         $projectList = Project::updateProject($projectList);
         $tagList = Tag::where('label',$tagLabel)->get();
