@@ -231,13 +231,13 @@ class Admin extends Controller
                         $param->content = $request->$label;
                     }
                 } elseif ($param->type == "image"){
-
-                    File::delete($param->content);
                     $file = $request->$label;
-                    $name = $param->label.'.'.$file->extension();
-                    $param->content = self::getImagePath(false).$name;
-                    var_dump($param->content);
-                    self::uploadImage($file->path(),$name,array(150,150));
+                    if(substr($file->getMimeType(),0,5)=="image"){
+                      File::delete($param->content);
+                      $name = $param->label.'.'.$file->extension();
+                      $param->content = self::getImagePath(false).$name;
+                      self::uploadImage($file->path(),$name,array(150,150));
+                    }
                 }
 
                 $param->save();
