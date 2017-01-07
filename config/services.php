@@ -15,8 +15,8 @@ return [
     */
 
     'mailgun' => [
-        'domain' => env('www.benjaminbrasseur.fr'),
-        'secret' => env('key-91acc59d94e764167f2eeea0fcdd434d'),
+        'domain' => env('MAILGUN_DOMAIN'),
+        'secret' => env('MAILGUN_SECRET'),
     ],
 
     'mandrill' => [

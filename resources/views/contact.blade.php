@@ -4,7 +4,7 @@
 
     <div class="col-md-12 text-center kind-text">
         <h3>
-            Retrouvez moi sur d'autres plateformes
+            {{ Trnslt::profilD('social_network_'.$lang)[0]->content }}
         </h3>
     </div>
     <div class="col-md-12 text-center">
@@ -24,7 +24,7 @@
     </div>
     <div class="col-md-12 text-center kind-text">
         <h3>
-            Ou laissez moi un message
+            {{ Trnslt::profilD('contact_'.$lang)[0]->content }}
         </h3>
     </div>
     <div class="col-md-12">
@@ -37,9 +37,9 @@
                 </div>
             </div>
             <div class="form-group col-sm-12">
-                <label for="email" class="col-sm-2">Contenu</label>
+                <label for="message" class="col-sm-2">Message</label>
                 <div class="col-sm-6">
-                    <textarea name="email" class="form-control" id="content" required></textarea>
+                    <textarea name="message" class="form-control" id="content" required></textarea>
                 </div>
             </div>
             <div class="col-sm-12">

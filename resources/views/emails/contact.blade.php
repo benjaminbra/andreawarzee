@@ -1,7 +1,12 @@
 <html>
 <head></head>
 <body>
-<h1>{{$title}}</h1>
-<p>{{$content}}</p>
+  <div style="background:#ededed;border:1px solid grey;border-radius:2px;padding:5px;text-align:justify;font-family:monospace;">
+    <h1>{{$title}} - {{ $user }}</h1>
+    <p>Message envoyé le : {{ date('d/m/Y à G:i:s') }}</p>
+    <p style="max-width: 500px;font-size:20px;">
+      {{$content}}
+    </p>
+  </div>
 </body>
 </html>

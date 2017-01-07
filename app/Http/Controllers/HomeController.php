@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Profil;
 
 use App\Lang;
 use App\Project;
@@ -12,6 +13,7 @@ use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
 
 
 class HomeController extends Controller
@@ -23,7 +25,6 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-
     }
 
     public function indexDefault(){
@@ -47,6 +48,7 @@ class HomeController extends Controller
     }
 
     public function page($lang,$tagLabel){
+        self::langCheck($lang);
         $projectList = Project::where('labelTag',$tagLabel)
                                 ->where('published','1')
                                 ->orderBy('datePost','desc')->get();
@@ -75,13 +77,24 @@ class HomeController extends Controller
     }
 
     public function contact($lang){
+        self::langCheck($lang);
         return view('contact',[
             'lang' => $lang,
         ]);
     }
 
     public function send(Request $request, $lang){
-
+        $user = $request->email;
+        $to = Profil::where('label','contact')->get()[0];
+        Mail::send('emails.contact', ['user' => $user,'title' => 'Contact', 'content' => $request->message, 'copie' => false], function ($m) use ($user,$to) {
+            $m->from($user, $user);
+            $m->to($to->content, $to->content)->subject('Contact');
+        });
+        Mail::send('emails.contact', ['user' => $user,'title' => 'Contact', 'content' => $request->message, 'copie' => true], function ($m) use ($user,$to) {
+            $m->from($user, $user);
+            $m->to($user, $user)->subject('Contact');
+        });
+        return redirect('/'.$lang.'/contact');
     }
 
     /*

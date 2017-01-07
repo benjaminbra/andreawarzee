@@ -42,10 +42,10 @@ class TranslationBank extends Controller
         $uri = $route->getURI();
         $parameters = $route->parameters();
         $parameters['lang'] = $lang;
-        $routeExplode = explode('/',$uri);
+        $routeExplode = self::removeUseless(explode('/',$uri));
         $delimiter = array('{','}');
         $newRoute = "";
-        if(count($routeExplode) > 2){
+        if(count($routeExplode) > 1){
             foreach($routeExplode as $param){
                 $realParam = str_replace($delimiter,'',$param);
                 if($realParam==$param){
@@ -59,7 +59,7 @@ class TranslationBank extends Controller
                 }
             }
         } else {
-            $newRoute.= '/'.$lang;
+            $newRoute= '/'.$lang;
         }
 
         return $newRoute;
@@ -90,5 +90,9 @@ class TranslationBank extends Controller
         }
 
         return $newFormat;
+    }
+
+    private static function removeUseless($array){
+      return array_filter($array, function($value) { return $value !== ''; });
     }
 }
