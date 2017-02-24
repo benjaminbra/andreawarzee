@@ -241,7 +241,7 @@ class Admin extends Controller
                     $imageOptimize = Image::make(self::getImagePath().$imageName);
                     if($imageExplode[0]=="logo"){
                         $imageLink = Profil::where('label','logo')->get();
-                    } elseif ($imageExplode[0]!="footer-logo") {
+                    } elseif ($imageExplode[0]=="footer-logo") {
                         $imageLink = Profil::where('label','footer-logo')->get();
                     } elseif($image->type == "diaporama") {
                         $imageOptimize = self::resizeImage($imageOptimize);
