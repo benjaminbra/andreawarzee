@@ -58,13 +58,12 @@ body.unicorn{
     display: block;
     text-align: justify;
     word-wrap: break-word;
-    font-size: 12px;
+    font-size: 18px;
 }
 
 .menu{
     margin: 40px 0;
 }
-
 
 .menu .description{
     display: none;

@@ -14,7 +14,6 @@ use Intervention\Image\Facades\Image;
 
 class Admin extends Controller
 {
-
     private static $maxWidth = 800; // Reverse if image is paysage
     private static $maxHeight = 1300; // Default value if image is portrait
 
@@ -23,7 +22,6 @@ class Admin extends Controller
     }
 
     public function index(){
-
         $projectList = Project::all();
         $projectList = Project::updateProject($projectList);
 
@@ -33,11 +31,9 @@ class Admin extends Controller
     }
 
     public function listProject($labelTag){
-
         $projectList = Project::where('labelTag',$labelTag)->get();
         $projectList = Project::updateProject($projectList);
         $tag = Tag::where('label',$labelTag)->get();
-
         return view('admin.home',[
             'projectList' => $projectList,
             'category' => $tag,
@@ -56,7 +52,6 @@ class Admin extends Controller
       $langL = Lang::all();
       $project = new Project;
       $projectTr = new ProjectTranslate;
-
       $result = array();
       $project->datePost = NULL;
       $project->labelTag = NULL;
@@ -74,12 +69,10 @@ class Admin extends Controller
     }
 
     public function editProject($id){
-
         $project = Project::find($id);
         $pImages = ProjectImage::where('idProject',$project->id)
                                     ->orderBy('position','asc')->get();
         $pTranslate = ProjectTranslate::where('idProject',$project->id)->get();
-
         return view('admin.project',[
             'project' => $project,
             'pT' => $pTranslate,
@@ -88,7 +81,6 @@ class Admin extends Controller
     }
 
     public function deleteProject($id){
-
         $images = ProjectImage::where('idProject',$id)->get();
         foreach($images as $image){
             $request = new Request;
@@ -101,7 +93,6 @@ class Admin extends Controller
         }
         $project = Project::find($id);
         $project->delete();
-
         return redirect('/admin');
     }
 
@@ -123,11 +114,9 @@ class Admin extends Controller
           $projectTr = ProjectTranslate::where('idProject',$request->id);
           $result = $projectTr;
         default:
-          # code...
           break;
       }
       return json_encode($result);
-
     }
 
     public function apiSave(Request $request){
@@ -138,14 +127,12 @@ class Admin extends Controller
       $projectImg = new ProjectImage;
       try{
         switch ($request->table) {
-
           case "image":
             $projectImg = ProjectImage::find($request->id);
             $projectImg->{$request->name} = $request->data;
             $projectImg->save();
             $result = $projectImg;
             break;
-
           case "project_translate":
             $start = stripos($request->name,'[')+1;
             $end = stripos($request->name,']');
@@ -174,13 +161,10 @@ class Admin extends Controller
             $result = "false";
             break;
         }
-
         echo json_encode($result);
       } catch(Exception $e){
         echo json_encode("false");
       }
-
-
     }
 
     public function apiSaveImages(Request $request){
@@ -205,7 +189,6 @@ class Admin extends Controller
     }
 
     public function deleteImage(Request $request){
-
         $image = ProjectImage::find($request->id);
         File::delete(self::getImagePath().$image->id.'.'.$image->extension);
         $image->delete();
@@ -239,9 +222,7 @@ class Admin extends Controller
                       self::uploadImage($file->path(),$name,array(150,150));
                     }
                 }
-
                 $param->save();
-
             }
         }
 
@@ -254,12 +235,14 @@ class Admin extends Controller
             if($imageName!="." && $imageName!=".."){
                 $imageExplode = explode('.',$imageName);
                 $image = ProjectImage::find($imageExplode[0]);
-                if(!isset($image->id) && $imageExplode[0]!="logo"){
+                if(!isset($image->id) && $imageExplode[0]!="logo" && $imageExplode[0]!="footer-logo"){
                     File::delete(self::getImagePath().$imageName);
                 } else {
                     $imageOptimize = Image::make(self::getImagePath().$imageName);
                     if($imageExplode[0]=="logo"){
                         $imageLink = Profil::where('label','logo')->get();
+                    } elseif ($imageExplode[0]!="footer-logo") {
+                        $imageLink = Profil::where('label','footer-logo')->get();
                     } elseif($image->type == "diaporama") {
                         $imageOptimize = self::resizeImage($imageOptimize);
                     } elseif($image->type == "vignette"){
@@ -355,9 +338,7 @@ class Admin extends Controller
             $size = self::newSize($h,$w,$size);
             $imageLoad->resize($size[1],$size[0]);
         }
-
         return $imageLoad;
-
     }
 
     /**

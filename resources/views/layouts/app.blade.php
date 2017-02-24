@@ -44,7 +44,7 @@
                 <div class="col-xs-10">
                     <div class="col-xs-1">
                         <a href="{{ url('/'.$lang) }}">
-                            <img class="logo" alt="logo" src="{{ Trnslt::profilD('logo')[0]->content }}"/>
+                            <img class="logo" alt="logo" src="{{ Trnslt::profilD('footer-logo')[0]->content }}"/>
                         </a>
                     </div>
                 </div>
