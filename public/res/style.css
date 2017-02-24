@@ -127,9 +127,14 @@ h1.home-title{
   margin: 0 auto 10px;
 }
 
+.footer a{
+  color: #63100F;
+}
+
 .project .title{
     font-family: BebasNeue, Arial, sans-serif;
     padding: 0 15px 0;
+    color: #63100F;
 }
 
 .project .project-images{
