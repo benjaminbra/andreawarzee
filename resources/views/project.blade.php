@@ -8,7 +8,7 @@
                 {{ $content->title }}
             </h1>
             <span class="project-description col-lg-12 col-md-12 col-xs-12">
-                {{ $content->description }}
+                {!! nl2br(e($content->description)) !!}
             </span>
         @endif
     @endforeach
