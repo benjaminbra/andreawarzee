@@ -20,7 +20,7 @@
             </a>
             <div class="block-description col-lg-12 col-md-12 col-xs-12">
                 <span class="description">
-                    {{ Trnslt::profilD($lang."_description")[0]->content }}
+                    {!! Trnslt::profilD($lang."_description")[0]->content !!}
                 </span>
             </div>
             <div class="footer col-lg-12 col-md-12 text-center">
