@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Andréa Warzee</title>
-    <link rel="shortcut icon" href="{{ Trnslt::profilD('logo')[0]->content }}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ Trnslt::profilD('footer-logo')[0]->content }}" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="{{ url('/lib/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url('/lib/fontawesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ url('/lib/perfectscrollbar/css/perfect-scrollbar.min.css') }}" />
@@ -20,7 +20,7 @@
             </a>
             <div class="block-description col-lg-12 col-md-12 col-xs-12">
                 <span class="description">
-                    {{ Trnslt::profilD($lang."_description")[0]->content }}
+                    {!! Trnslt::profilD($lang."_description")[0]->content !!}
                 </span>
             </div>
             <div class="footer col-lg-12 col-md-12 text-center">
