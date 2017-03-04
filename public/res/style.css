@@ -53,6 +53,7 @@ body.unicorn{
 
 .sub-header .block-description{
   padding: 0 25px;
+  overflow: auto;
 }
 
 .header .description{
@@ -60,6 +61,7 @@ body.unicorn{
     text-align: justify;
     word-wrap: break-word;
     font-size: 17px;
+    margin: 0 0 20px;
 }
 
 .menu{
@@ -119,8 +121,12 @@ h1.home-title{
 
 .footer{
     font-size: 13px;
-    bottom: 10px;
+    bottom: 0;
     position: absolute;
+    background: #606060;
+    height: 105px;
+    padding: 0 15px 10px;
+    box-shadow: -40px 0 40px 20px #606060;
 }
 
 .footer .footer-logo{
@@ -196,6 +202,7 @@ h1.home-title{
     padding: 0;
     text-decoration: none;
     margin: 45px 0;
+    height: 193px;
 }
 
 .block-menu{
