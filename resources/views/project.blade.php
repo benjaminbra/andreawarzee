@@ -27,6 +27,36 @@
             <button class="Wallop-buttonNext right"><i class="fa fa-arrow-right"></i></button>
         @endif
     </div>
+    @if(count($projectList)>0 && $projectList[0]->content != null)
+      <div class="col-lg-12 col-md-12 col-xs-12">
+        <h2>Suggestions</h2>
+        <div class="col-lg-12 col-md-12 col-xs-12">
+          @foreach($projectList as $projectLink)
+            @if(count($projectLink->imageList)>0)
+              @foreach($projectLink->imageList as $imageLink)
+                @if($imageLink->type == "vignette")
+                    <a href="{{ url($lang.'/p/'.$projectLink->id) }}" style="background:url('{{ url('/res/img/'.$imageLink->id.'.'.$imageLink->extension) }}');background-repeat: no-repeat;background-size: cover;background-position:center;" class="block-menu col-lg-2 col-md-2 col-xs-2">
+
+                        <span class="description description-projet">
+                            @foreach($projectLink->content as $content)
+                                @if($content->lang == $lang)
+                                    {{ $content->title }}
+                                @endif
+                            @endforeach
+                            <span class="date-project">
+                                {{ $projectLink->datePost }}
+                            </span>
+                        </span>
+                    </a>
+                    @break
+                @endif
+              @endforeach
+            @endif
+          @endforeach
+        </div>
+      </div>
+    @endif
+
 </div>
 @endsection
 
