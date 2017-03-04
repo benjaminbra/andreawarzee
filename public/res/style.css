@@ -218,6 +218,10 @@ h1.home-title{
     padding: 0;
 }
 
+.block-menu img{
+  height: 100%;
+}
+
 .block-menu .description{
     display: none;
     position: absolute;
@@ -375,7 +379,7 @@ h1.home-title{
     }
 
     .block-menu{
-        max-height: 105px;
+        height: 105px;
     }
 
     .block-menu .description{
