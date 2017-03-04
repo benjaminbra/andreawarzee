@@ -27,7 +27,7 @@
             <button class="Wallop-buttonNext right"><i class="fa fa-arrow-right"></i></button>
         @endif
     </div>
-    @if(count($projectList)>0 && $projectList[0]->content != null)
+    @if(count($projectList)>0)
       <div class="col-lg-12 col-md-12 col-xs-12">
         <h2>Suggestions</h2>
         <div class="col-lg-12 col-md-12 col-xs-12">
