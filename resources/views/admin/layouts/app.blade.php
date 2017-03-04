@@ -2,7 +2,6 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Administration</title>
     <link rel="stylesheet" type="text/css" href="{{ url('/lib/bootstrap/css/bootstrap.min.css') }}">
@@ -40,7 +39,7 @@
             </a>
         </div>
     </div>
-    <div class="col-md-12 col-xs-12">
+    <div class="content-admin col-md-12 col-xs-12">
         @yield('content')
     </div>
 </div>

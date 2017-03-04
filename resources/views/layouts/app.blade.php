@@ -18,7 +18,7 @@
             <a href="{{ url('/'.$lang) }}" class="block-header col-lg-12 col-md-12 col-xs-12">
                 <img class="img-responsive" alt="logo" src="{{ Trnslt::profilD('logo')[0]->content }}"/>
             </a>
-            <div class="block-description col-lg-12 col-md-12 col-xs-12">
+            <div class="block-description scrollable-block col-lg-12 col-md-12 col-xs-12">
                 <span class="description">
                     {!! nl2br(e(Trnslt::profilD($lang."_description")[0]->content)) !!}
                 </span>
@@ -97,6 +97,7 @@
             map[e.keyCode] = false;
         }
     });
+
     $('.block-menu').mouseenter(function(){
         $(this).children('.description').slideToggle();
     }).mouseleave(function(){
@@ -108,6 +109,23 @@
     });
 
     $('.scrollable-block').perfectScrollbar();
+
+    updateDescriptionHeight();
+
+    $(window).on('resize',function(){
+      updateDescriptionHeight();
+    });
+
+    function updateDescriptionHeight(){
+      console.log('------');
+      headerHeight = $('.sub-header').height();
+      console.log(headerHeight);
+      logoHeight = $('.block-header').height()+90;
+      footerHeight = $('.footer').height()+10;
+      descriptionHeight = headerHeight - logoHeight - footerHeight;
+      console.log(descriptionHeight);
+      $('.block-description').css('height',descriptionHeight);
+    }
 </script>
 @yield('script')
 </body>
