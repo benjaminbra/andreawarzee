@@ -117,13 +117,10 @@
     });
 
     function updateDescriptionHeight(){
-      console.log('------');
       headerHeight = $('.sub-header').height();
-      console.log(headerHeight);
       logoHeight = $('.block-header').height()+90;
       footerHeight = $('.footer').height()+10;
       descriptionHeight = headerHeight - logoHeight - footerHeight;
-      console.log(descriptionHeight);
       $('.block-description').css('height',descriptionHeight);
     }
 </script>

@@ -21,22 +21,24 @@
         </div>
     @endif
     @foreach($projectList as $project)
-        <a href="{{ url($lang.'/p/'.$project->id) }}" class="block-menu col-lg-2 col-md-3 col-xs-6">
-            @foreach($project->imageList as $image)
-                @if($image->type == "vignette")
-                    <img class="img-responsive" alt="dessin-{{ $image->id }}" src="{{ url('/res/img/'.$image->id.'.'.$image->extension) }}"/>
-                @endif
-            @endforeach
-            <span class="description description-projet">
-                @foreach($project->content as $content)
-                    @if($content->lang == $lang)
-                        {{ $content->title }}
-                    @endif
-                @endforeach
-                <span class="date-project">
-                    {{ $project->datePost }}
-                </span>
-            </span>
-        </a>
+      @foreach($project->imageList as $image)
+          @if($image->type == "vignette")
+              <a href="{{ url($lang.'/p/'.$project->id) }}" style="background:url('{{ url('/res/img/'.$image->id.'.'.$image->extension) }}');background-repeat: no-repeat;background-size: cover;background-position:center;" class="block-menu col-lg-2 col-md-3 col-xs-6">
+
+                  <span class="description description-projet">
+                      @foreach($project->content as $content)
+                          @if($content->lang == $lang)
+                              {{ $content->title }}
+                          @endif
+                      @endforeach
+                      <span class="date-project">
+                          {{ $project->datePost }}
+                      </span>
+                  </span>
+              </a>
+              @break
+          @endif
+      @endforeach
+
     @endforeach
 @endsection
