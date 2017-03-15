@@ -68,11 +68,17 @@ class HomeController extends Controller
         self::projectCheck($id);
 
         $project = Project::where('id',$id)->where('published','1')->get();
+        $projectList = Project::where('id','!=',$id)
+                                  ->where('published','1')
+                                  ->inRandomOrder()
+                                  ->take(6)
+                                  ->get();
         $project = Project::updateProject($project);
 
         return view('project',[
             'lang' => $lang,
             'project' => $project,
+            'projectList' => $projectList
         ]);
     }
 

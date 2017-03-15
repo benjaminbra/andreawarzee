@@ -53,12 +53,18 @@ body.unicorn{
 
 .sub-header .block-description{
   padding: 0 25px;
+  overflow: auto;
 }
 
 .header .description{
     display: block;
     word-wrap: break-word;
+<<<<<<< HEAD
     font-size: 13px;
+=======
+    font-size: 17px;
+    margin: 0 0 20px;
+>>>>>>> 0e6290275f936f637603699c2c5b79fa3c3ee267
 }
 
 .menu{
@@ -117,9 +123,18 @@ h1.home-title{
 }
 
 .footer{
+<<<<<<< HEAD
     font-size: 11px;
     bottom: 10px;
+=======
+    font-size: 13px;
+    bottom: 0;
+>>>>>>> 0e6290275f936f637603699c2c5b79fa3c3ee267
     position: absolute;
+    background: #606060;
+    height: 105px;
+    padding: 0 15px 10px;
+    box-shadow: -40px 0 40px 20px #606060;
 }
 
 .footer .footer-logo{
@@ -195,6 +210,7 @@ h1.home-title{
     padding: 0;
     text-decoration: none;
     margin: 45px 0;
+    height: 193px;
 }
 
 .block-menu{
@@ -208,6 +224,10 @@ h1.home-title{
 .block-header img{
     margin: auto;
     padding: 0;
+}
+
+.block-menu img{
+  height: 100%;
 }
 
 .block-menu .description{
@@ -367,7 +387,7 @@ h1.home-title{
     }
 
     .block-menu{
-        max-height: 105px;
+        height: 105px;
     }
 
     .block-menu .description{

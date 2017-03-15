@@ -1,6 +1,8 @@
 @extends('admin.layouts.app')
 
 @section('content')
+
+  <div class="popup"></div>
     <div class="col-md-12 paddingizer">
         <form class="form-inline" action="{{ url('/admin/project/load') }}" method="POST">
             {{ csrf_field() }}
@@ -68,7 +70,7 @@
                         <a href="{{ url('/admin/project/edit/'.$project->id) }}" class="btn btn-primary">
                             Voir / Modifier
                         </a>
-                        <a href="{{ url('/admin/project/delete/'.$project->id) }}" class="btn btn-danger">
+                        <a onclick="return remove_click('{{ url('/admin/project/delete/'.$project->id) }}')" class="btn btn-danger">
                             Supprimer (Definitif !)
                         </a>
                     </td>
@@ -76,4 +78,25 @@
             @endforeach
         </table>
     </div>
+@endsection
+
+@section('script')
+  <script type="application/javascript">
+    function remove_click(link){
+      $('.popup').empty();
+      $('.popup').html('<div class="jumbotron"><div class="container"><p>Voulez-vous supprimer vraiment ce projet ?</p><a href="'+link+'" class="btn btn-danger" id="oui">Oui</a><button class="btn btn-primary" id="non">Non</button></div></div>');
+      $('.popup').animate({
+        top:53
+      }, 1000);
+      return false;
+    }
+
+    $('.popup').on('click','#non',function(){
+      $('.popup').animate({
+        top:-147
+      }, 1000, function(){
+        $('.popup').empty();
+      });
+    })
+  </script>
 @endsection
