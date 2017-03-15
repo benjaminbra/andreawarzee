@@ -59,12 +59,7 @@ body.unicorn{
 .header .description{
     display: block;
     word-wrap: break-word;
-<<<<<<< HEAD
     font-size: 13px;
-=======
-    font-size: 17px;
-    margin: 0 0 20px;
->>>>>>> 0e6290275f936f637603699c2c5b79fa3c3ee267
 }
 
 .menu{
@@ -123,13 +118,8 @@ h1.home-title{
 }
 
 .footer{
-<<<<<<< HEAD
     font-size: 11px;
     bottom: 10px;
-=======
-    font-size: 13px;
-    bottom: 0;
->>>>>>> 0e6290275f936f637603699c2c5b79fa3c3ee267
     position: absolute;
     background: #606060;
     height: 105px;
