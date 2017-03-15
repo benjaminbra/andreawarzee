@@ -58,10 +58,8 @@ body.unicorn{
 
 .header .description{
     display: block;
-    text-align: justify;
     word-wrap: break-word;
-    font-size: 17px;
-    margin: 0 0 20px;
+    font-size: 13px;
 }
 
 .menu{
@@ -120,8 +118,8 @@ h1.home-title{
 }
 
 .footer{
-    font-size: 13px;
-    bottom: 0;
+    font-size: 11px;
+    bottom: 10px;
     position: absolute;
     background: #606060;
     height: 105px;

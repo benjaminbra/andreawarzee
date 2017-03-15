@@ -4,12 +4,12 @@
   <div class="project col-lg-12 col-md-12 col-xs-12">
     @foreach($project[0]->content as $content)
       @if($content->lang == $lang)
-        <h1 class="title col-lg-12 col-md-12 col-xs-12">
-          {{ $content->title }}
-        </h1>
-        <span class="project-description col-lg-12 col-md-12 col-xs-12">
-          {!! nl2br(e($content->description)) !!}
-        </span>
+          <h1 class="title col-lg-12 col-md-12 col-xs-12">
+              {{ $content->title }}
+          </h1>
+          <span class="project-description col-lg-12 col-md-12 col-xs-12">
+              {!! nl2br(e($content->description)) !!}
+          </span>
       @endif
     @endforeach
     <div class="wallop Wallop--slide project-images col-lg-12 col-md-12 col-xs-12">
@@ -52,6 +52,6 @@
 @endsection
 
 @section('css')
-  <link rel="stylesheet" href="{{ url('/lib/wallop/css/wallop.css') }}"/>
-  <link rel="stylesheet" href="{{ url('/lib/wallop/css/wallop--slide.css') }}"/>
+    <link rel="stylesheet" href="{{ url('/lib/wallop/css/wallop.css') }}"/>
+    <link rel="stylesheet" href="{{ url('/lib/wallop/css/wallop--slide.css') }}"/>
 @endsection
