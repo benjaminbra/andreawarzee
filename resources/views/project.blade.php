@@ -20,7 +20,7 @@
         @foreach($project[0]->imageList as $img)
           @if($img->type == "diaporama")
             <div class="Wallop-item">
-              <img itemprop="image" itemscope itemtype="http://schema.org/ImageObject" class="project-image" src="{{ url('/res/img/'.$img->id.'.'.$img->extension) }}"/>
+              <img src="{{ url('/res/img/'.$img->id.'.'.$img->extension) }}"/>
             </div>
           @endif
         @endforeach
