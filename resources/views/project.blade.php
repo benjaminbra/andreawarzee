@@ -2,6 +2,9 @@
 
 @section('content')
   <div itemscope itemtype="http://schema.org/Article" class="project col-lg-12 col-md-12 col-xs-12">
+        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="name" content="Andrea Warzee">
+        </span>
     @foreach($project[0]->content as $content)
       @if($content->lang == $lang)
           <h1 itemprop="name" class="title col-lg-12 col-md-12 col-xs-12">
