@@ -13,6 +13,8 @@
 </head>
 <body>
   <div class="page-container">
+      <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="Andrea Warzee"></span>
     <div class="no-padd header col-lg-2 col-md-3">
       <div class="no-padd sub-header col-lg-12 col-md-12">
         <a href="{{ url('/'.$lang) }}" class="block-header col-lg-12 col-md-12 col-xs-12">

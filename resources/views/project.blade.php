@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="project col-lg-12 col-md-12 col-xs-12">
+  <div itemscope itemtype="http://schema.org/Article" class="project col-lg-12 col-md-12 col-xs-12">
     @foreach($project[0]->content as $content)
       @if($content->lang == $lang)
-          <h1 class="title col-lg-12 col-md-12 col-xs-12">
+          <h1 itemprop="name" class="title col-lg-12 col-md-12 col-xs-12">
               {{ $content->title }}
           </h1>
-          <span class="project-description col-lg-12 col-md-12 col-xs-12">
+          <span itemprop="articleBody" class="project-description col-lg-12 col-md-12 col-xs-12">
               {!! nl2br(e($content->description)) !!}
           </span>
       @endif
@@ -17,7 +17,7 @@
         @foreach($project[0]->imageList as $img)
           @if($img->type == "diaporama")
             <div class="Wallop-item">
-              <img class="project-image" src="{{ url('/res/img/'.$img->id.'.'.$img->extension) }}"/>
+              <img itemprop="image" class="project-image" src="{{ url('/res/img/'.$img->id.'.'.$img->extension) }}"/>
             </div>
           @endif
         @endforeach
