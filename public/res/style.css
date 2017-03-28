@@ -281,6 +281,11 @@ h1.home-title{
     margin: 15px 0;
 }
 
+img{
+  margin: auto;
+  max-width: 100%;
+}
+
 @media (min-width: 992px){
     .block-menu{
         height: 182px;
