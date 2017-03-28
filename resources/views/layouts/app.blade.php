@@ -16,7 +16,7 @@
     <div class="no-padd header col-lg-2 col-md-3">
       <div class="no-padd sub-header col-lg-12 col-md-12">
         <a href="{{ url('/'.$lang) }}" class="block-header col-lg-12 col-md-12 col-xs-12">
-          <img class="img-responsive" alt="logo" src="{{ Trnslt::profilD('logo')[0]->content }}"/>
+          <img class="img-responsive" alt="Andrea Warzee" src="{{ Trnslt::profilD('logo')[0]->content }}"/>
         </a>
         <div class="block-description scrollable-block col-lg-12 col-md-12 col-xs-12">
           <span class="description">
@@ -44,7 +44,7 @@
           <div class="col-xs-10">
             <div class="col-xs-1">
               <a href="{{ url('/'.$lang) }}">
-                <img class="logo" alt="logo" src="{{ Trnslt::profilD('footer-logo')[0]->content }}"/>
+                <img class="logo" alt="Andrea Warzee" src="{{ Trnslt::profilD('footer-logo')[0]->content }}"/>
               </a>
             </div>
           </div>
