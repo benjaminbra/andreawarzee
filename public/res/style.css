@@ -148,7 +148,6 @@ h1.home-title{
 
 .project .project-images{
     height: 500px;
-    position:
 }
 
 .project .project-description{
@@ -282,7 +281,7 @@ h1.home-title{
 }
 
 .Wallop-item img{
-  width:100;
+  width: 100%;
 }
 
 @media (min-width: 992px){
