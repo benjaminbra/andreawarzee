@@ -82,7 +82,10 @@
   </div>
   <script type="application/javascript" src="{{ url('/lib/jquery/jquery.min.js') }}"></script>
   <script src="{{ url('/lib/perfectscrollbar/js/perfect-scrollbar.jquery.min.js') }}"></script>
+  <script src="{{ url('/lib/flexibility/flexibility.js') }}"></script>
   <script type="application/javascript">
+  flexibility(document.documentElement);
+  
   var map = {65: false, 87: false};
   $(document).keydown(function(e) {
     if (e.keyCode in map) {

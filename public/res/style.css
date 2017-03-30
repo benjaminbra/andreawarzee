@@ -161,6 +161,7 @@ h1.home-title{
 
 .Wallop-item,
 .Wallop-list{
+    -js-display: flex;
     display: flex;
 }
 
