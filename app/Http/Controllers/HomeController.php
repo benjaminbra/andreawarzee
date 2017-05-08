@@ -115,11 +115,10 @@ class HomeController extends Controller
     }
 
     private static function linkify($text){
-      $regex = '/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/';
-
-      $newText = preg_replace($regex, '<a href="'+$url[0]+'">'+$url[0]+'</a>', $text);
-
-      return $newText;
+      return preg_replace(
+              "~[[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/]~",
+              "<a href=\"\\0\">\\0</a>",
+              $text);
     }
 
     private static function langCheck($langSearch){
