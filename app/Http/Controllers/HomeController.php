@@ -120,7 +120,7 @@ class HomeController extends Controller
       $newText = $text;
       if(preg_match($reg_exUrl, $text, $url)) {
        // make the urls hyper links
-       $newText = preg_replace($regex, "<a href="{$url[0]}">{$url[0]}</a> ", $text);
+       $newText = preg_replace($regex, '<a href="'+$url[0]+'">'+$url[0]+'</a>', $text);
 
      }
 
