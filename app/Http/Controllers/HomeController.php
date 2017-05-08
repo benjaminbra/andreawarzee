@@ -115,6 +115,10 @@ class HomeController extends Controller
     }
 
     private static function linkify($text){
+      $regex = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
+      $newUrl = '<a href="$1">$1</a>';
+      $text = preg_replace($regex, $newUrl, $text);
+
       return $text;
     }
 
