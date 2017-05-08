@@ -74,7 +74,6 @@ class HomeController extends Controller
                                   ->take(6)
                                   ->get();
         $project = Project::updateProject($project);
-        $project[0] = self::detectAllTextLinks($project[0]);
         return view('project',[
             'lang' => $lang,
             'project' => $project,
@@ -106,21 +105,6 @@ class HomeController extends Controller
     /*
      * Functions for data treatment
      */
-
-    private static function detectAllTextLinks($project){
-      foreach ($project->content as $key => $content) {
-        $project->content[$key] = self::linkify($content);
-      }
-      return $project;
-    }
-
-    private static function linkify($text){
-      $regex = '/\[url\](.*?)\[\/url\]/is';
-      $newUrl = '<a href="$1">$1</a>';
-      $text = preg_replace($regex, $newUrl, $text);
-
-      return $text;
-    }
 
     private static function langCheck($langSearch){
         $langCheck = false;
