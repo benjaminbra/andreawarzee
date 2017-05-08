@@ -38,7 +38,7 @@
             <label for="tag" class="col-sm-2">Catégorie</label>
             <div class="col-sm-6">
                 <select name="tag" class="form-control" id="tag">
-                    <option disabled="disabled">Choisissez une catégorie</option>
+                    <option value="NULL">Choisissez une catégorie</option>
                     @foreach(Trnslt::tagL() as $tag)
                         @if($tag->lang_id == "fr" && $tag->actif == 1)
                             <option value="{{ $tag->label }}" {{ FrmChk::value($project,"labelTag","option",$tag->label) }}>{{ $tag->content }}</option>
