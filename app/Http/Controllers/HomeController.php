@@ -118,7 +118,7 @@ class HomeController extends Controller
       $regex = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
 
       $newText = $text;
-      if(preg_match($reg_exUrl, $text, $url)) {
+      if(preg_match($regex, $text, $url)) {
        // make the urls hyper links
        $newText = preg_replace($regex, '<a href="'+$url[0]+'">'+$url[0]+'</a>', $text);
 
