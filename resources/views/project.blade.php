@@ -35,6 +35,17 @@
 
 @section('script')
   <script src="{{ url('/lib/wallop/js/Wallop.min.js') }}"></script>
+  <script>
+    var text = $('.project-description').html();
+    $('.project-description').html(urlify(text));
+
+    function urlify(text) {
+      var urlRegex = /(https?:\/\/[^\s]+)/g;
+      return text.replace(urlRegex, function(url) {
+          return '<a href="' + url + '">' + url + '</a>';
+      })
+    }
+  </script>
   <script type="application/javascript">
   var wallopEl = document.querySelector('.wallop');
   var slider = new Wallop(wallopEl);
