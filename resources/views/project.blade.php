@@ -37,7 +37,7 @@
   <script src="{{ url('/lib/wallop/js/Wallop.min.js') }}"></script>
   <script>
     var text = $('.project-description').html().split('<br>');
-    var newText = array();
+    var newText = Array();
     for(i in text){
       newText.push(urlify(text[i]));
     }
