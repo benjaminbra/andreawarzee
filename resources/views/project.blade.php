@@ -36,8 +36,12 @@
 @section('script')
   <script src="{{ url('/lib/wallop/js/Wallop.min.js') }}"></script>
   <script>
-    var text = $('.project-description').html();
-    $('.project-description').html(urlify(text));
+    var text = $('.project-description').html().split('<br>');
+    var newText = array();
+    for(i in text){
+      newText.push(urlify(text[i]));
+    }
+    $('.project-description').html(newText.join('<br>'));
 
     function urlify(text) {
       var urlRegex = /(https?:\/\/[^\s]+)/g;
